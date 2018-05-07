@@ -33,6 +33,8 @@ function roundToDecimal(value, decimals) {
  * @param {Number} [params.min] Minimum allowed value
  * @param {Number} [params.max] Maximum allowed value
  * @param {Number} [params.step] Increment by which to change value
+ *
+ * @member dat.controllers
  */
 class NumberControllerBox extends NumberController {
   constructor(object, property, params) {
@@ -46,7 +48,7 @@ class NumberControllerBox extends NumberController {
      * {Number} Previous mouse y position
      * @ignore
      */
-    let prevY;
+    // let prevY;
 
     function onChange() {
       const attempted = parseFloat(_this.__input.value);
@@ -64,7 +66,7 @@ class NumberControllerBox extends NumberController {
     function onBlur() {
       onFinish();
     }
-
+/*
     function onMouseDrag(e) {
       const diff = prevY - e.clientY;
       _this.setValue(_this.getValue() + diff * _this.__impliedStep);
@@ -83,7 +85,7 @@ class NumberControllerBox extends NumberController {
       dom.bind(window, 'mouseup', onMouseUp);
       prevY = e.clientY;
     }
-
+    */
     this.__input = document.createElement('input');
     this.__input.setAttribute('type', 'text');
 
@@ -91,7 +93,7 @@ class NumberControllerBox extends NumberController {
 
     dom.bind(this.__input, 'change', onChange);
     dom.bind(this.__input, 'blur', onBlur);
-    dom.bind(this.__input, 'mousedown', onMouseDown);
+    // dom.bind(this.__input, 'mousedown', onMouseDown);
     dom.bind(this.__input, 'keydown', function(e) {
       // When pressing enter, you can be as precise as you want.
       if (e.keyCode === 13) {
